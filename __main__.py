@@ -11,9 +11,17 @@ import ui
 
 
 
+# todo: module 分割
+# todo: 生成バッファの種類選びをスマートに
+# todo: UI 考える
+# todo: パラメータ変化の方法(現在はスライダーのみ)
+
+
+
 OSStatus = ctypes.c_int32
 err_ptr = ctypes.c_void_p()
 
+# --- 構造体作成
 class AudioBuffer(ctypes.Structure):
   _fields_ = [
     ('mNumberChannels', ctypes.c_uint32),
@@ -22,6 +30,7 @@ class AudioBuffer(ctypes.Structure):
   ]
 
 class AudioBufferList(ctypes.Structure):
+  # xxx: AudioBuffer * 2 ?
   _fields_ = [
     ('mNumberBuffers', ctypes.c_uint32),
     ('mBuffers', AudioBuffer * 2)
@@ -100,8 +109,6 @@ class Oscillator:
     else:
       wave = -1.0 * self.amplitude 
       return wave
-
-
 
   def whiteNoise(self, _):
     return uniform(-1.0, 1.0)
@@ -193,6 +200,8 @@ class Synth:
     buf = ObjCInstance(buffer)
     np_buff = np.ctypeslib.as_array(buf.floatChannelData()[0], (256, 16))
     with BytesIO() as bIO:
+      # fixme: AttributeError: 'View' object has no attribute 'im_view'
+      
       #matplotlib.image.imsave(bIO, np_buff + 1, format='png',cmap=(matplotlib.image.cm.get_cmap('gray',256)), vmax=2.0,vmin=0.0)
       matplotlib.image.imsave(bIO, np_buff + 1, format='png')
       img = ui.Image.from_data(bIO.getvalue())
@@ -240,7 +249,6 @@ class View(ui.View):
   def layout(self):
     self.osc.fre_slider.y = self.type_osc.height
 
-    
   def will_close(self):
     self.synth.stop()
 
