@@ -23,7 +23,7 @@ Core audio を使った例:
 取り急ぎ動くのは
 
 
-preview branch
+[preview](https://github.com/pome-ta/pysta-synthesizer/tree/preview)
 
 
 つまり、こっちは動かない
