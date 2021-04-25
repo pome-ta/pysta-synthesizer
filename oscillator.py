@@ -1,4 +1,5 @@
 class Oscillator:
   def __init__(self):
-    pass
+    self.amplitude = 1
+    self.frequency: float = 440.0
 
