@@ -18,3 +18,9 @@ Core audio を使った例:
 
 
 挙動確認はミュート解除
+
+
+取り急ぎ動くのは
+
+
+preview branch
