@@ -45,6 +45,7 @@ class Oscillator:
       self.mixwave, self.sine, self.triangle, self.sawtooth, self.square,
       self.whiteNoise
     ]
+    self.tone_triangle = ui.SegmentedControl()
     self.fre_slider = ui.Slider()
     self.fre_slider.flex = 'W'
     self.fre_slider.value = 0.5
