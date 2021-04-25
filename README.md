@@ -24,3 +24,6 @@ Core audio を使った例:
 
 
 preview branch
+
+
+つまり、こっちは動かない
