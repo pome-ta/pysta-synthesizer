@@ -27,3 +27,15 @@ Core audio を使った例:
 
 
 つまり、こっちは動かない
+
+
+
+
+- [AVAudioSourceNode](https://developer.apple.com/documentation/avfaudio/avaudiosourcenode?language=objc)
+- [【iOS】Core Audioでシンセサイザーを作る](https://qiita.com/TokyoYoshida/items/df60ea8585a0223e868b)
+- [シンセプログラミング](https://daichilab.sakura.ne.jp/synthprog/index.html)
+- [Building a Synthesizer in Swift](https://betterprogramming.pub/building-a-synthesizer-in-swift-866cd15b731)
+- [PCM の基本](http://wisdom.sakura.ne.jp/system/winapi/media/mm5.html)
+- [Core Audio その１ AudioBufferとAudioBufferList](https://objective-audio.jp/2008/03/22/core-audio-audiobufferaudiobuf/)
+
+
