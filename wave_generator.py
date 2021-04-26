@@ -1,11 +1,26 @@
+from objc_util import ObjCClass
 import ui
-from objc_class import *
+
 import pdbg
 
-class WaveGenerator:
+
+
+AVAudioEngine = ObjCClass('AVAudioEngine')
+AVAudioSourceNode = ObjCClass('AVAudioSourceNode')
+
+#AVAudioMixerNode = ObjCClass('AVAudioMixerNode')
+
+
+
+
+class Synthesizer:
   def __init__(self):
-    self.audioEngine = AVAudioEngine.new()
-    self.sourceNode = AVAudioSourceNode.alloc()
+    self.time: float = 0.0
+    self.frequencyRamp: float = 0.0
+    self.currentFrequency: float = 20.0
+    
+  def setup(self):
+    
     
 
 
@@ -13,7 +28,7 @@ class WaveGenerator:
 class View(ui.View):
   def __init__(self, *args, **kwargs):
     ui.View.__init__(self, *args, **kwargs)
-    self.wave_generator = WaveGenerator()
+    self.synthesizer = Synthesizer()
 
 
 if __name__ == '__main__':
