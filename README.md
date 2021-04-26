@@ -2,13 +2,9 @@
 
 
 
-iOS アプリの[Pythonista3](http://omz-software.com/pythonista/) でシンセサイザー 🎹
+iOS アプリの[Pythonista3](http://omz-software.com/pythonista/) でシンセサイザーを作る 🎹
 
 
-
-Core audio を使った例:
-
-[https://github.com/pome-ta/pysta-sine_wave001](https://github.com/pome-ta/pysta-sine_wave001)
 
 
 
@@ -27,6 +23,12 @@ Core audio を使った例:
 
 
 つまり、こっちは動かない
+
+
+
+Core audio を使った例:
+
+[https://github.com/pome-ta/pysta-sine_wave001](https://github.com/pome-ta/pysta-sine_wave001)
 
 
 
