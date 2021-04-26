@@ -112,7 +112,7 @@ class Oscillator:
 
   def mixwave(self, time):
     #wave = self.sine(time) * self.sine(time, .8)
-    #wave = self.whiteNoise(time) * self.tone_triangle(time, 2)
+    wave = self.whiteNoise(time) * self.tone_triangle(time, 2)
     wave01 = self.square(time) * self.tone_triangle(time, 3)
     wave02 = self.whiteNoise(time) * self.tone_triangle(time, 2)
     wave = wave01 + wave02
