@@ -1,10 +1,10 @@
 # pysta-synthesizer
 
-
-
 iOS アプリの[Pythonista3](http://omz-software.com/pythonista/) でシンセサイザーを作る 🎹
 
+> 2021/05/15
 
+微調整
 
 
 
