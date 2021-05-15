@@ -9,24 +9,16 @@ import matplotlib.image
 from objc_util import ObjCClass, ObjCBlock, ObjCInstance
 import ui
 
-# todo: module 分割
-# todo: 生成バッファの種類選びをスマートに
-# todo: UI 考える
-# todo: パラメータ変化の方法(現在はスライダーのみ)
-# todop 波形を波にする
-
 OSStatus = ctypes.c_int32
 err_ptr = ctypes.c_void_p()
 
 
-# --- 構造体作成
 class AudioBuffer(ctypes.Structure):
   _fields_ = [('mNumberChannels', ctypes.c_uint32),
               ('mDataByteSize', ctypes.c_uint32), ('mData', ctypes.c_void_p)]
 
 
 class AudioBufferList(ctypes.Structure):
-  # xxx: AudioBuffer * 2 ?
   _fields_ = [('mNumberBuffers', ctypes.c_uint32), ('mBuffers',
                                                     AudioBuffer * 2)]
 
@@ -45,7 +37,6 @@ class Oscillator:
       self.mixwave, self.sine, self.triangle, self.sawtooth, self.square,
       self.whiteNoise
     ]
-    self.tone_triangle = ui.SegmentedControl()
     self.fre_slider = ui.Slider()
     self.fre_slider.flex = 'W'
     self.fre_slider.value = 0.5
@@ -112,7 +103,7 @@ class Oscillator:
 
   def mixwave(self, time):
     #wave = self.sine(time) * self.sine(time, .8)
-    wave = self.whiteNoise(time) * self.tone_triangle(time, 2)
+    #wave = self.whiteNoise(time) * self.tone_triangle(time, 2)
     wave01 = self.square(time) * self.tone_triangle(time, 3)
     wave02 = self.whiteNoise(time) * self.tone_triangle(time, 2)
     wave = wave01 + wave02
@@ -177,10 +168,10 @@ class Synth:
   def SourceNodeRender(self, _cmd, isSilence_ptr, timestamp_ptr,
                        frameCount_ptr, outputData_ptr):
     ablPointer = outputData_ptr.contents
-    toneGenerator = choice(self.parent.osc.wave_box)
+    #toneGenerator = choice(self.parent.osc.wave_box)
     for frame in range(frameCount_ptr):
       sampleVal = self.parent.toneGenerator(self.timex)
-      sampleVal = whiteNoise(self.timex)
+      #sampleVal = whiteNoise(self.timex)
       self.timex += self.deltaTime
 
       for bufferr in range(ablPointer.mNumberBuffers):
@@ -194,9 +185,7 @@ class Synth:
     buf = ObjCInstance(buffer)
     np_buff = np.ctypeslib.as_array(buf.floatChannelData()[0], (256, 16))
     with BytesIO() as bIO:
-      # fixme: AttributeError: 'View' object has no attribute 'im_view'
-
-      matplotlib.image.imsave(bIO, np_buff + 1, format='png',cmap=(matplotlib.image.cm.get_cmap('gray',256)), vmax=2.0,vmin=0.0)
+      #matplotlib.image.imsave(bIO, np_buff + 1, format='png',cmap=(matplotlib.image.cm.get_cmap('gray',256)), vmax=2.0,vmin=0.0)
       matplotlib.image.imsave(bIO, np_buff + 1, format='png')
       img = ui.Image.from_data(bIO.getvalue())
       self.parent.im_view.image = img
