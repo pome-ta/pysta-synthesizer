@@ -177,10 +177,10 @@ class Synth:
   def SourceNodeRender(self, _cmd, isSilence_ptr, timestamp_ptr,
                        frameCount_ptr, outputData_ptr):
     ablPointer = outputData_ptr.contents
-    #toneGenerator = choice(self.parent.osc.wave_box)
+    toneGenerator = choice(self.parent.osc.wave_box)
     for frame in range(frameCount_ptr):
       sampleVal = self.parent.toneGenerator(self.timex)
-      #sampleVal = whiteNoise(self.timex)
+      sampleVal = whiteNoise(self.timex)
       self.timex += self.deltaTime
 
       for bufferr in range(ablPointer.mNumberBuffers):
@@ -196,7 +196,7 @@ class Synth:
     with BytesIO() as bIO:
       # fixme: AttributeError: 'View' object has no attribute 'im_view'
 
-      #matplotlib.image.imsave(bIO, np_buff + 1, format='png',cmap=(matplotlib.image.cm.get_cmap('gray',256)), vmax=2.0,vmin=0.0)
+      matplotlib.image.imsave(bIO, np_buff + 1, format='png',cmap=(matplotlib.image.cm.get_cmap('gray',256)), vmax=2.0,vmin=0.0)
       matplotlib.image.imsave(bIO, np_buff + 1, format='png')
       img = ui.Image.from_data(bIO.getvalue())
       self.parent.im_view.image = img
