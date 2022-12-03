@@ -237,6 +237,6 @@ class View(ui.View):
 
 if __name__ == '__main__':
   view = View()
-  view.present('fullscreen')
   #view.present()
+  view.present(style='fullscreen', orientations=['portrait'])
 
